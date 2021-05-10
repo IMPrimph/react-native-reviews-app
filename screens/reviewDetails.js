@@ -6,9 +6,9 @@ export default function ReviewDetails({ route, navigation }) {
     const { title, body, rating } = route.params;
     return (
         <View style={globalStyles.container}>
-            <Text>{title}</Text>
-            <Text>{body}</Text>
-            <Text>{rating}</Text>
+            <Text style={globalStyles.titleText}>{title}</Text>
+            <Text style={globalStyles.titleText}>{body}</Text>
+            <Text style={globalStyles.titleText}>{rating}</Text>
         </View>
     )
 }

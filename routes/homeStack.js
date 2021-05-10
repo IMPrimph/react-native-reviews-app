@@ -2,13 +2,14 @@ import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from '../screens/home'
 import ReviewDetails from "../screens/reviewDetails";
-
+import Header from '../shared/header'
 
 const homeStack = createStackNavigator();
 
-export default HomeStack = () => {
+export default HomeStack = ({ navigation }) => {
     return (
         <homeStack.Navigator
+            initialRouteName='Home'
             screenOptions={{
                 headerStyle: {
                     backgroundColor: '#f4511e',
@@ -19,8 +20,14 @@ export default HomeStack = () => {
                 },
             }}
         >
-            <homeStack.Screen name="Home" component={Home} />
-            <homeStack.Screen name="ReviewDetails" component={ReviewDetails} />
+            <homeStack.Screen
+                name="Home"
+                component={Home}
+                options={() => ({
+                    headerTitle: () => <Header title='HOME' />,
+                })}
+            />
+            <homeStack.Screen name="ReviewDetails" component={ReviewDetails} options={{ title: 'Details' }} />
         </homeStack.Navigator>
     );
 }
