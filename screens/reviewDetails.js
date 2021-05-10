@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { globalStyles } from '../styles/global'
 
 export default function ReviewDetails({ route, navigation }) {

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import * as Font from 'expo-font'
-import Home from './screens/home';
 import AppLoading from 'expo-app-loading'
-import { AppNavigator } from './routes/homeStack';
+import Navigator from "./routes/drawer";
 
 const getFonts = () => Font.loadAsync({
   'nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
@@ -10,7 +9,6 @@ const getFonts = () => Font.loadAsync({
 })
 
 
-// expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false)
@@ -18,13 +16,13 @@ export default function App() {
   if (fontsLoaded) {
     return (
       // <Home />
-      <AppNavigator />
+      <Navigator />
     )
   } else {
     return (
       <AppLoading
         startAsync={getFonts}
-        onFinish={() => setFontsLoaded(true)}
+        onFinish={() => { setFontsLoaded(true) }}
         onError={() => console.log('error')}
       />
     )
