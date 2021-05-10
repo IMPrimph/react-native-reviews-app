@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FlatList, Text, TouchableOpacity, View, Modal, StyleSheet } from 'react-native'
+import { TouchableWithoutFeedback, Keyboard, FlatList, Text, TouchableOpacity, View, Modal, StyleSheet } from 'react-native'
 import { globalStyles } from '../styles/global'
 import Card from '../shared/card';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -13,20 +13,30 @@ export default function Home({ navigation }) {
         { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
     ]);
 
+    const addReview = (review) => {
+        review.key = Math.random().toString()
+        setReviews((currentReviews) => {
+            return [review, ...currentReviews]
+        })
+        setModalOpen(false)
+    }
+
     return (
         <View style={globalStyles.container}>
 
             <Modal visible={modalOpen} animationType='slide'>
-                <View style={styles.modalContent}>
-                    <MaterialIcons
-                        name='close'
-                        size={24}
-                        style={{ ...styles.modalToggle, ...styles.modalClose }}
-                        onPress={() => setModalOpen(false)}
-                    />
-                    <ReviewForm />
-                    {/* <Text>Hello from the Modal</Text> */}
-                </View>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.modalContent}>
+                        <MaterialIcons
+                            name='close'
+                            size={24}
+                            style={{ ...styles.modalToggle, ...styles.modalClose }}
+                            onPress={() => setModalOpen(false)}
+                        />
+                        <ReviewForm addReview={addReview} />
+                        {/* <Text>Hello from the Modal</Text> */}
+                    </View>
+                </TouchableWithoutFeedback>
             </Modal>
 
             <MaterialIcons
