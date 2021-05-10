@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from '../screens/home'
 import ReviewDetails from "../screens/reviewDetails";
 import Header from '../shared/header'
+import { Image } from 'react-native';
 
 const homeStack = createStackNavigator();
 
@@ -12,7 +13,7 @@ export default HomeStack = ({ navigation }) => {
             initialRouteName='Home'
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: '#f4511e',
+                    backgroundColor: '#bbb',
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
@@ -24,7 +25,8 @@ export default HomeStack = ({ navigation }) => {
                 name="Home"
                 component={Home}
                 options={() => ({
-                    headerTitle: () => <Header title='HOME' />,
+                    headerTitle: () => <Header title='GameZone' />,
+                    headerBackground: () => <Image source={require('../assets/game_bg.png')} style={{ height: '100%' }} />
                 })}
             />
             <homeStack.Screen name="ReviewDetails" component={ReviewDetails} options={{ title: 'Details' }} />

@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 import About from '../screens/about'
 import Header from '../shared/header'
+import { Image } from 'react-native';
 
 
 const aboutStack = createStackNavigator();
@@ -12,7 +13,7 @@ export const AboutStack = () => {
             initialRouteName='About'
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: '#f4511e',
+                    backgroundColor: '#bbb',
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
@@ -24,7 +25,8 @@ export const AboutStack = () => {
                 name="About"
                 component={About}
                 options={() => ({
-                    headerTitle: () => <Header title='About' />,
+                    headerTitle: () => <Header title='About GameZone' />,
+                    headerBackground: () => <Image source={require('../assets/game_bg.png')} style={{ height: '100%' }} />
                 })}
             />
         </aboutStack.Navigator>
