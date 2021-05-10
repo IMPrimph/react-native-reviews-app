@@ -4,7 +4,7 @@ import { globalStyles } from '../styles/global'
 import Card from '../shared/card';
 
 export default function ReviewDetails({ route, navigation }) {
-    const { title, body, rating } = route.params;
+    const { title, body, rating, key } = route.params;
     let imgPath = `../assets/rating-${rating}.png`
     return (
         <View style={globalStyles.container}>
@@ -16,7 +16,7 @@ export default function ReviewDetails({ route, navigation }) {
                     <Text style={globalStyles.titleText}>GameZone Rating: </Text>
                     <View style={styles.ratingHearts}>
                         {Array(rating).fill().map(() =>
-                            <Image style={styles.image} source={require('../assets/rating-1.png')} />
+                            <Image key={Math.random()} style={styles.image} source={require('../assets/rating-1.png')} />
                         )}
                     </View>
                     {/* <Image source={require(imgPath)} /> */}
